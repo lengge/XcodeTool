@@ -3,36 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>wex_init</string>
+	<string>setup</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        
-        [self wex_setupSubviews];
-        [self wex_layoutSubviews];
-    }
-    return self;
+	<string>#pragma mark - private
+- (void)p_setupSubviews {
+    
 }
 
-- (void)wex_setupSubviews {
-
-}
-
-- (void)wex_layoutSubviews {
+- (void)p_layoutSubviews {
     
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>3462081A-3A79-4D3D-BA6F-5241B281F1DC</string>
+	<string>D61A70EE-1D9A-4602-9DF1-A6EACAAC4FA4</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>wex初始化</string>
+	<string>初始化</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>wex_init</string>
+	<string>Init</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
