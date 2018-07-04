@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>unsigned int outCount;
+    objc_property_t *propertyList = class_copyPropertyList([UIAlertAction class], &amp;outCount);
+    for (int i = outCount -1; i &gt;= 0; i--) {
+        // 循环获取属性的名字property_getName函数返回一个属性的名称
+        NSString *getPropertyName = [NSString stringWithCString:property_getName(propertyList[i]) encoding:NSUTF8StringEncoding];
+        NSString *getPropertyNameString = [NSString stringWithCString:property_getAttributes(propertyList[i]) encoding:NSUTF8StringEncoding];
+        NSLog(@"%@====%@",getPropertyNameString,getPropertyName);
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>FC1A52D3-6E7D-4BB6-A309-A36C2F4762E6</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>运行时查询属性列表</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>checkPropertyList</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

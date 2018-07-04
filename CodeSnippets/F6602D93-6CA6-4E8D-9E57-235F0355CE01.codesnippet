@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// 检查相机授权
+- (BOOL)p_checkCameraAuthorization {
+    __block BOOL isAuthorization = NO;
+    // 先判断摄像头硬件是否好用
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusNotDetermined) {
+            // 系统还未知是否访问，第一次开启相机时
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                isAuthorization = granted;
+            }];
+        } else if (authStatus == AVAuthorizationStatusAuthorized) {
+            // 允许
+            isAuthorization = YES;
+        } else {
+            // 不允许
+            isAuthorization = NO;
+        }
+    } else {
+        WEXNSLOG(@"摄像头不可用");
+    }
+    
+    return isAuthorization;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F6602D93-6CA6-4E8D-9E57-235F0355CE01</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>相机授权</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>CameraAuthorization</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

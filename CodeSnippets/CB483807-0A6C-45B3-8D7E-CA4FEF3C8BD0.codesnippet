@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//kvc 获取所有key值
+- (NSArray *)getAllIvar:(id)object
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    unsigned int count;
+    Ivar *ivars = class_copyIvarList([object class], &amp;count);
+    for (int i = 0; i &lt; count; i++) {
+        Ivar ivar = ivars[i];
+        const char *keyChar = ivar_getName(ivar);
+        NSString *keyStr = [NSString stringWithCString:keyChar encoding:NSUTF8StringEncoding];
+        @try {
+            id valueStr = [object valueForKey:keyStr];
+            NSDictionary *dic = nil;
+            if (valueStr) {
+                dic = @{keyStr : valueStr};
+            } else {
+                dic = @{keyStr : @"值为nil"};
+            }
+            [array addObject:dic];
+        }
+        @catch (NSException *exception) {}
+    }
+    return [array copy];
+}
+
+//获得所有属性
+- (NSArray *)getAllProperty:(id)object
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    unsigned int count;
+    objc_property_t *propertys = class_copyPropertyList([object class], &amp;count);
+    for (int i = 0; i &lt; count; i++) {
+        objc_property_t property = propertys[i];
+        const char *nameChar = property_getName(property);
+        NSString *nameStr = [NSString stringWithCString:nameChar encoding:NSUTF8StringEncoding];
+        [array addObject:nameStr];
+    }
+    return [array copy];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>CB483807-0A6C-45B3-8D7E-CA4FEF3C8BD0</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>获取对象所有key值</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
